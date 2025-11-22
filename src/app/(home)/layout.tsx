@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './navbar'
+import Footer from './footer'
 
 
 interface Props{
@@ -12,7 +13,10 @@ export default function Layout({children}:Props) {
     <div className='flex flex-col min-h-screen'>
         
         <Navbar/>
-      {children}
+      <div className='flex-1 bg-[#F4F4f0]'>
+        {children}
+      </div>
+      <Footer/>
     </div>
   )
 }
