@@ -1,11 +1,11 @@
 import React from 'react'
 
-const page = () => {
+const PricingPage = () => {
   return (
     <div>
-      pricing page
+      
     </div>
   )
 }
 
-export default page
+export default PricingPage
