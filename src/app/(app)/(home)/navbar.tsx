@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import NavbarSidebar from './navbar-sidebar'
-import { MenuIcon } from 'lucide-react'
+import { FiAlignJustify } from "react-icons/fi";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -94,7 +94,7 @@ const Navbar = () => {
                     className='size-12 border-transparent bg-white'
                     onClick={() => setIsSidebarOpen(true)}
                 >
-                    <MenuIcon  />
+                    <FiAlignJustify size={45} />
                 </Button>
             </div>
         </nav>
