@@ -1,39 +1,54 @@
+
 import React from 'react'
 import Navbar from './navbar'
 import Footer from './footer'
-import SearchFilter from './search-filter'
+
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import {Category} from '@/payload-types'
+import SearchFilters from './search-filters'
 
-interface Props{
-    children: React.ReactNode
+interface Props {
+  children: React.ReactNode
 }
 
+export default async function Layout({ children }: Props) {
+  const payload = await getPayload({
+    config: configPromise,
+  })
 
-export default async function Layout({children}:Props) {
-    const payload = await getPayload({
-        config:configPromise,
-    })
-    const data = await payload.find({
-        collection:"categories",
-        depth:1,  //populate subcategories
-        where:{
-            parent:{
-                exists:false
-            }
-        }
-    })
+  const data = await payload.find({
+    collection: "categories",
+    depth: 1,  // populate subcategories
+    pagination: false,
+    where: {
+      parent: {
+        exists: false
+      }
+    }
+  })
 
-    console.log(data);
+  const formatedData = data.docs.map((doc) => ({
+    ...doc,
+    subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
+      //because of depth 1 we are conindent "doc " will be type of category
+      ...(doc as Category),
+      subcategories:undefined,
+    }))
+  }))
+
+console.log(data,formatedData)
+
+
+
   return (
     <div className='flex flex-col min-h-screen'>
-        
-        <Navbar/>
-        <SearchFilter data={data} />
+      <Navbar />
+      <SearchFilters data={formatedData}/>
       <div className='flex-1 bg-[#F4F4f0]'>
         {children}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
