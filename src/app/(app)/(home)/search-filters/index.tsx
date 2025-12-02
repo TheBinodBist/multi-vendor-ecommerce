@@ -1,8 +1,13 @@
 import React from 'react'
 import SearchInput from './search-input'
 import Categories from './categories'
+import { CustomCategory } from '../types'
 
-const SearchFilters = ({data}:any) => {
+interface Props{
+  data: CustomCategory;
+}
+
+const SearchFilters = ({data}:Props) => {
   return (
     <div className='px-4 lg:px-12 py-8 border-b flex-col gap-4 w-full'>
         <SearchInput />

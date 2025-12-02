@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+import { CollectionConfig } from 'payload/types';
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -20,21 +20,17 @@ export const Categories: CollectionConfig = {
       name: 'color',
       type: 'text',
     },
-
-   
     {
       name: 'parent',
       type: 'relationship',
       relationTo: 'categories',
       hasMany: false,
     },
-
-   
     {
       name: 'subcategories',
       type: 'join',
       collection: 'categories',
-      on: 'parent', 
+      on: 'parent',
       hasMany: true,
     },
   ],

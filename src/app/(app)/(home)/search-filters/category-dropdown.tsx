@@ -1,13 +1,14 @@
 "use client"
 
 import React, { useRef, useState } from 'react'
-import { Category } from '@/payload-types'
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useDropdownPosition } from '@/hooks/use-dropdown-position'
 import SubcategoryMenu from './subcategory-menu';
+import { CustomCategory } from '../types';
 interface Props {
-    category: Categrory;
+    category: CustomCategory[];
     isActive: boolean;
     isNavigationHovered?: boolean
 }
@@ -28,17 +29,25 @@ const CategoryDropdown = ({ category, isActive, isNavigationHovered }: Props) =>
         setIsOpen(false)
     }
 
+    // const toogleDropdown =()=>{
+    //     if(category.subcategories?.docs?.length){
+    //         setIsOpen(!isOpen)
+    //     }
+    // }
+
     const dropdownPosition = getDropdownPosition()
     return (
         <div className='relative'
             ref={dropdownRef}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            // onClick={toogleDropdown}
         >
             <div className='relative'>
                 <Button variant={"elevated"} className={cn(
                     "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-white hover:border-primary text-black ",
-                    isActive && !isNavigationHovered && "bg-white border-primary"
+                    isActive && !isNavigationHovered && "bg-white border-primary",
+                    isOpen && "bg-white border-primary"
                 )}>{category.name}</Button>
             </div>
             {category.subcategories && category.subcategories.length > 0 && (
