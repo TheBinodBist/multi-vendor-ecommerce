@@ -7,7 +7,7 @@ import { ListFilterIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { useParams } from "next/navigation";
-import CategoriesSidebar from "./category-sidebar";
+import CategoriesSidebar from "./categories-sidebar";
 
 interface CategoriesProps {
   data: CategoriesGetManyOutput;
