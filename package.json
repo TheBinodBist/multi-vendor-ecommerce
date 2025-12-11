@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:seed":"bun run src/seed.ts"
+    "db:seed": "bun run src/seed.ts"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.65.0",
@@ -35,7 +35,12 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@tanstack/react-query": "5",
+    "@trpc/client": "11",
+    "@trpc/server": "11.0.3",
+    "@trpc/tanstack-react-query": "11",
     "class-variance-authority": "^0.7.1",
+    "client-only": "^0.0.1",
     "clsx": "^2.1.1",
     "graphql": "^16.12.0",
     "lucide-react": "^0.555.0",
@@ -44,7 +49,9 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
-    "tailwind-merge": "^3.4.0"
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
