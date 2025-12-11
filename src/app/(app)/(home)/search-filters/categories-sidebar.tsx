@@ -73,31 +73,31 @@ const CategoriesSidebar = ({ open, onOpenChange, data }: Props) => {
         <SheetHeader className="p-4 border-b">
           <SheetTitle>Categories</SheetTitle>
         </SheetHeader>
-        <ScrollArea className="flex flex-col overflow-y-auto">
-          {parentCategories && (
-            <div className="flex flex-col overflow-y-auto h-full pb-2">
-              <button
-                onClick={handleBackClick}
-                className=" cursor-pointer w-full text-left p-4 hover:bg-black  hover:text-white  flex items-center text-base font-medium"
-              >
-                <ChevronLeftIcon className="size-4 mr-2" />
-                Back
-              </button>
-            </div>
-          )}
-          {currentCategories.map((category) => (
-            <button
-              className=" cursor-pointer w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center text-base font-medium "
-              key={category.slug}
-              onClick={() => handleCategoryClick(category)}
-            >
-              {category.name}
-              {category.subcategories && category.subcategories.length > 0 && (
-                <ChevronRightIcon className="size-4" />
-              )}
-            </button>
-          ))}
-        </ScrollArea>
+        <ScrollArea className="overflow-y-auto">
+  {parentCategories && (
+    <button
+      onClick={handleBackClick}
+      className="cursor-pointer w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
+    >
+      <ChevronLeftIcon className="size-4 mr-2" />
+      Back
+    </button>
+  )}
+
+  {currentCategories.map((category) => (
+    <button
+      className="cursor-pointer w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center text-base font-medium"
+      key={category.slug}
+      onClick={() => handleCategoryClick(category)}
+    >
+      {category.name}
+      {category.subcategories && category.subcategories.length > 0 && (
+        <ChevronRightIcon className="size-4" />
+      )}
+    </button>
+  ))}
+</ScrollArea>
+
       </SheetContent>
     </Sheet>
   );
